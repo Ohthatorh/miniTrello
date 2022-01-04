@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$blackColor: #333;
+$whiteColor: #fff;
+$greenColor: #65b37a;
+$yellowColor: #f7ca18;
+$redColor: #d24d57;
+$violetColor: #aea8d3;
+$darkGreyColor: #353535;
+$containerWidth: 1280px;
+$centerMargin: 0 auto;
+$mainPaddings: 0 50px;
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $darkGreyColor;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: "Roboto", serif;
+}
+
+* {
+  color: $blackColor;
+  box-sizing: border-box;
+}
+
+@mixin stylesForButton {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: unset;
+  cursor: pointer;
+}
+
+@mixin container {
+  width: $containerWidth;
+  margin: $centerMargin;
+  padding: $mainPaddings;
+}
+
+@mixin styleForMagicBorder {
+  position: relative;
+  &:hover {
+    &::before,
+    &::after {
+      transform: scale(1);
+      border-radius: 15px;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2%;
+    left: -1%;
+    right: -1%;
+    bottom: -2%;
+    border-radius: 0;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    transform: scaleX(0);
+    transition: 0.2s;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2%;
+    left: -0.6%;
+    right: -0.6%;
+    bottom: -2%;
+    border-left: solid 2px;
+    border-right: solid 2px;
+    transition: 0.2s;
+    transform: scaleY(0);
+  }
+}
+
+@mixin styleForClick {
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: translate(2px, 2px);
+  }
+}

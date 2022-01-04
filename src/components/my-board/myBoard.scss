@@ -1,0 +1,266 @@
+@import "../../main.global.scss";
+
+.boardWrap {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &Title {
+    margin: 0 0 50px 0;
+    padding: 50px 80px;
+    font-size: 36px;
+    border: 1px solid $redColor;
+    border-radius: 10px;
+    color: $whiteColor;
+  }
+  &Lists {
+    display: flex;
+    &Add {
+      @include styleForMagicBorder;
+      @include styleForClick;
+      padding: 20px 50px;
+      align-self: flex-start;
+      background-color: transparent;
+      color: $whiteColor;
+      font-size: 24px;
+      border: 2px solid $greenColor;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+  }
+  &List {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    list-style-type: none;
+    &Item {
+      position: relative;
+      margin: 0 50px 50px 0;
+      border: 1px solid $yellowColor;
+      border-radius: 10px;
+      &Title {
+        margin: 0;
+        padding: 16px;
+        text-align: center;
+        font-size: 18px;
+        color: $whiteColor;
+        border-bottom: 1px solid $yellowColor;
+      }
+      &Todos {
+        padding: 20px 20px 0;
+        &List {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
+        &Item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          padding: 10px;
+          outline: 2px solid $violetColor;
+          border-radius: 10px;
+          text-align: center;
+          &Text {
+            margin: 0;
+            color: $whiteColor;
+          }
+          &Btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: $whiteColor;
+          }
+          &.active {
+            background-color: $greenColor;
+            outline: none;
+          }
+        }
+      }
+      &Input {
+        padding: 5px 10px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background-color: transparent;
+        border: none;
+        outline: 1px solid rgba($whiteColor, 0.4);
+        color: $whiteColor;
+        transition: outline 0.2s ease;
+        &::placeholder {
+          color: rgba($whiteColor, 0.4);
+        }
+        &:hover,
+        &:focus {
+          outline: 1px solid $whiteColor;
+        }
+      }
+      .close {
+        margin: 0 0 10px 0;
+        padding: 0 0 1px 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $blackColor;
+        text-align: center;
+        color: $whiteColor;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        &:hover {
+          color: rgba($whiteColor, 0.4);
+        }
+      }
+    }
+  }
+  &AddWrap {
+    width: 292px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    border: 2px solid $greenColor;
+    border-radius: 15px;
+    &Input {
+      padding: 5px 10px;
+      margin-bottom: 20px;
+      background-color: transparent;
+      border: none;
+      border-radius: 10px;
+      outline: 1px solid rgba($whiteColor, 0.4);
+      color: $whiteColor;
+      transition: outline 0.2s ease;
+      &::placeholder {
+        color: rgba($whiteColor, 0.4);
+      }
+      &:hover,
+      &:focus {
+        outline: 1px solid $whiteColor;
+      }
+    }
+    .close {
+      margin: 0 0 10px 0;
+      padding: 0 0 1px 0;
+      align-self: end;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: $blackColor;
+      text-align: center;
+      color: $whiteColor;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      &:hover {
+        color: rgba($whiteColor, 0.4);
+      }
+    }
+  }
+  &HomeButton {
+    @include stylesForButton;
+    @include styleForMagicBorder;
+    @include styleForClick;
+    padding: 8px 10px;
+    border: 1px solid $yellowColor;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $whiteColor;
+    cursor: pointer;
+  }
+  &DeleteButton {
+    @include stylesForButton;
+    @include styleForMagicBorder;
+    @include styleForClick;
+    padding: 8px 10px;
+    align-self: flex-start;
+    border: 1px solid $redColor;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $whiteColor;
+    cursor: pointer;
+  }
+  &ButtonGroup {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+  }
+}
+
+.deleteItem {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  height: 15%;
+  width: 100%;
+  background-color: rgba($redColor, 0.4);
+  backdrop-filter: blur(5px);
+  color: $whiteColor;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  border: none;
+  z-index: 2;
+  &Delete {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid $whiteColor;
+    border-radius: 20px;
+    &Text {
+      margin: 0 0 30px 0;
+      width: 100%;
+      font-size: 18px;
+      text-align: center;
+      color: $whiteColor;
+    }
+    &ConfirmButton {
+      @include stylesForButton;
+      width: 50%;
+      background-color: $redColor;
+      color: $whiteColor;
+      &:hover {
+        background-color: rgba($redColor, 0.8);
+      }
+    }
+    &CancelButton {
+      @include stylesForButton;
+      width: 40%;
+      margin-right: 10px;
+      color: $whiteColor;
+      border: 1px solid rgba($whiteColor, 0.4);
+    }
+    &ConfirmButton,
+    &CancelButton {
+      @include styleForMagicBorder;
+      @include styleForClick;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+  }
+  &Overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+  }
+}
